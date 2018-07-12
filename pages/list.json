@@ -3,6 +3,26 @@
     {
       "name": "品优解析",
       "url": "http://api.pucms.com/xnflv/?url="
+    },
+    {
+      "name": "腾讯可用，百域阁视频",
+      "url": "http://api.baiyug.cn/vip/index.php?url="
+    },
+    {
+      "name": "无名小站",
+      "url": "http://www.82190555.com/index/qqvod.php?url="
+    },
+    {
+      "name": "超清接口1_0",
+      "url": "http://www.52jiexi.com/tong.php?url="
+    },
+    {
+      "name": "超清接口1_1",
+      "url": "http://www.52jiexi.com/yun.php?url="
+    },
+    {
+      "name": "超清接口2",
+      "url": "http://jiexi.92fz.cn/player/vip.php?url="
     }
   ]
 }

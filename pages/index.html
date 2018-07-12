@@ -35,6 +35,17 @@
     background: #2B985D;
     cursor: pointer;
   }
+  select{
+    background: #31B16C;
+    color: #fff;
+    font-size: 18px;
+    width: 100px;
+    -webkit-appearance: none;
+    margin-right: 10px;
+  }
+  select:hover{
+    cursor: pointer;
+  }
   input{
     border: 2px solid #31B16C;
     color: #31B16C;
@@ -45,17 +56,17 @@
   </style>
 </head>
 <body>
-  <section class="flex flex-column">
+  <section class="flex flex-column" style="width: 100%;height: 100%;">
     <header>
       <div class="flex" style="width: 80%;margin: 20px auto;">
         <select name="channel" id="channel"></select>
-        <input class="flex-item" type="text" placeholder="复制各大视频网站播放页面链接到此框内，点击播放即可观看">
-        <button class="btn">播放</button>
+        <input class="flex-item" id="videoInput" type="text" placeholder="复制各大视频网站播放页面链接到此框内，点击播放即可观看">
+        <button class="btn" onclick="doPlay()">播放</button>
         <button class="btn">清除</button>
       </div>
     </header>
     <div class="flex-item">
-      <iframe src="" frameborder="0" scrolling="no"></iframe>
+      <iframe src="" frameborder="0" id="play" scrolling="no" style="width:100%;height: 100%;"></iframe>
     </div>
   </section>
 
@@ -69,7 +80,17 @@
     }
     let mySelect = document.getElementById('channel')
     mySelect.innerHTML = optHtml;
-  })
+  });
+
+  function doPlay(){
+    let mySelect = document.getElementById('channel')
+    let url = mySelect.options[mySelect.selectedIndex].value
+    let videoUrl = document.getElementById('videoInput').value
+    if (videoUrl.trim()) {
+      let play = document.getElementById('play')
+      play.src = url + videoUrl;
+    }
+  }
   </script>
 </body>
 </html>
