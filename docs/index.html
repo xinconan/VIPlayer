@@ -12,6 +12,9 @@
     width: 100%;
     height: 100%;
   }
+  *{
+    box-sizing: border-box;
+  }
   .flex{
     display: flex;
   }
@@ -39,7 +42,8 @@
     background: #31B16C;
     color: #fff;
     font-size: 18px;
-    width: 100px;
+    height: 44px;
+    width: 200px;
     -webkit-appearance: none;
     margin-right: 10px;
   }
@@ -52,20 +56,21 @@
     outline: none;
     font-size: 18px;
     padding: 5px;
+    height: 44px;
   }
   </style>
 </head>
 <body>
   <section class="flex flex-column" style="width: 100%;height: 100%;">
-    <header>
-      <div class="flex" style="width: 80%;margin: 20px auto;">
+    <header style="height: 80px;display: flex;align-items: center;">
+      <div class="flex" style="width: 80%;margin: 0 auto;">
         <select name="channel" id="channel"></select>
         <input class="flex-item" id="videoInput" type="text" placeholder="复制各大视频网站播放页面链接到此框内，点击播放即可观看">
-        <button class="btn" onclick="doPlay()">播放</button>
-        <button class="btn">清除</button>
+        <button class="btn" type="button" onclick="doPlay()">播放</button>
+        <button class="btn" type="button" onclick="doClear()">清除</button>
       </div>
     </header>
-    <div class="flex-item">
+    <div class="flex-item" style="background: #eee;">
       <iframe src="" frameborder="0" id="play" scrolling="no" style="width:100%;height: 100%;"></iframe>
     </div>
   </section>
@@ -81,15 +86,19 @@
     let mySelect = document.getElementById('channel')
     mySelect.innerHTML = optHtml;
   });
+  const vInput = document.getElementById('videoInput');
 
   function doPlay(){
     let mySelect = document.getElementById('channel')
     let url = mySelect.options[mySelect.selectedIndex].value
-    let videoUrl = document.getElementById('videoInput').value
+    let videoUrl = vInput.value
     if (videoUrl.trim()) {
       let play = document.getElementById('play')
       play.src = url + videoUrl;
     }
+  }
+  function doClear(){
+    vInput.value = ''
   }
   </script>
 </body>
