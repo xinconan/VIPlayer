@@ -46,6 +46,8 @@
     width: 200px;
     -webkit-appearance: none;
     margin-right: 10px;
+    outline: none;
+    padding: 0 5px;
   }
   select:hover{
     cursor: pointer;
@@ -70,22 +72,27 @@
         <button class="btn" type="button" onclick="doClear()">清除</button>
       </div>
     </header>
-    <div class="flex-item" style="background: #eee;">
-      <iframe src="" frameborder="0" id="play" scrolling="no" style="width:100%;height: 100%;"></iframe>
+    <div class="flex-item">
+      <!-- 设置iframe高度，通过100%设置有问题 -->
+      <iframe src="" frameborder="0" id="play" scrolling="no" onload="this.height=document.documentElement.clientHeight - 80;" style="width:100%;"></iframe>
     </div>
   </section>
 
   <script>
-  fetch('./list.json').then((resp)=>{
-    return resp.json();
-  }).then(data => {
-    let optHtml = ''
-    for(let item of data.list) {
-      optHtml += `<option value="${item.url}">${item.name}</option>`
+    window.onload = function(){
+      // 获取接口列表
+      fetch('./list.json').then((resp)=>{
+        return resp.json();
+      }).then(data => {
+        let optHtml = ''
+        for(let item of data.list) {
+          optHtml += `<option value="${item.url}">${item.name}</option>`
+        }
+        let mySelect = document.getElementById('channel')
+        mySelect.innerHTML = optHtml;
+      });
     }
-    let mySelect = document.getElementById('channel')
-    mySelect.innerHTML = optHtml;
-  });
+
   const vInput = document.getElementById('videoInput');
 
   function doPlay(){
