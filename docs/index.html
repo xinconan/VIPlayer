@@ -50,6 +50,7 @@
     padding: 0 5px;
   }
   select:hover{
+    background: #2B985D;
     cursor: pointer;
   }
   input{
@@ -101,7 +102,18 @@
     let videoUrl = vInput.value
     if (videoUrl.trim()) {
       let play = document.getElementById('play')
-      play.src = url + videoUrl;
+      // 支持双协议，在当前页面播放
+      if(/^\/\//.test(url)) {
+        play.src = url + videoUrl;
+        return;
+      }
+      let reg = new RegExp('^'+location.protocol);
+      // 解析协议和当前页面协议一样，在当前页面播放，否则新页面播放（跨域）
+      if (reg.test(url)){
+        play.src = url + videoUrl;
+      }else {
+        window.open(url + videoUrl)
+      }
     }
   }
   function doClear(){
