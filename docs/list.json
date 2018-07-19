@@ -27,6 +27,10 @@
     {
       "name": "超清接口2",
       "url": "http://jiexi.92fz.cn/player/vip.php?url="
+    },
+    {
+      "name": "接口47",
+      "url": "http://api.47ks.com/webcloud/?v="
     }
   ]
 }
