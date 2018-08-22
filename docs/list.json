@@ -31,6 +31,10 @@
     {
       "name": "接口47",
       "url": "http://api.47ks.com/webcloud/?v="
+    },
+    {
+      "name": "Q2017",
+      "url": "http://www.q2017.com/vip/?url="
     }
   ]
 }
